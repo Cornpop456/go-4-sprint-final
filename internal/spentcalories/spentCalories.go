@@ -95,10 +95,10 @@ func TrainingInfo(data string, weight, height float64) string {
 	}
 
 	return fmt.Sprintf(`Тип тренировки: %s
-Длительность: %f ч.
-Дистанция: %f км.
-Скорость: %f км/ч
-Сожгли калорий: %f`,
+Длительность: %.2f ч.
+Дистанция: %.2f км.
+Скорость: %.2f км/ч
+Сожгли калорий: %.2f`,
 		activity,
 		duration.Hours(),
 		dist,
@@ -141,5 +141,5 @@ const (
 // height float64 — рост пользователя.
 func WalkingSpentCalories(steps int, weight, height float64, duration time.Duration) float64 {
 	meanSpd := meanSpeed(steps, duration)
-	return ((walkingCaloriesWeightMultiplier * weight) + (meanSpd*meanSpd/height)*walkingSpeedHeightMultiplier) * float64(duration) * minInH
+	return ((walkingCaloriesWeightMultiplier * weight) + (meanSpd*meanSpd/height)*walkingSpeedHeightMultiplier) * duration.Hours() * minInH
 }
