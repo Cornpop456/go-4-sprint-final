@@ -18,7 +18,7 @@ func parsePackage(data string) (int, time.Duration, error) {
 	parts := strings.Split(data, ",")
 
 	if len(parts) != 2 {
-		return 0, 0, errors.New("Wrong format")
+		return 0, 0, errors.New("wrong format")
 	}
 
 	steps, err := strconv.Atoi(parts[0])
